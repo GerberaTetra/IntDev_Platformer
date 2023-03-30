@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ground
+  - spike
+  - flag
+  - FlagWIN
+  - id1
+  - id2
+  - id3
+  - id4
   layers:
   - Default
   - TransparentFX
@@ -12,8 +20,8 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - top
+  - bottom
   - 
   - 
   - 
