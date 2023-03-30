@@ -25,11 +25,13 @@ public class PlayerControl : MonoBehaviour
     bool moveLeft = false;
     bool moveRightU = false;
     bool moveLeftU = false;
+    bool Up = false;
 
     public GameObject id1;
     public GameObject id2;
     public GameObject id3;
     public GameObject id4;
+    public GameObject idbox;
 
     public int id = 0;
     public float castDist = 0.2f;
@@ -52,7 +54,27 @@ public class PlayerControl : MonoBehaviour
     {
 
 
+        if (Input.GetButtonDown("Up"))
+        {
+            Up = true;
+        }
+        if (dead == true)
+        {
+            SceneManager.LoadScene("Game Over");
+        }
+        if (win == true)
+        {
+            SceneManager.LoadScene("Level3");
 
+        if ((win3 == true))
+            {
+                SceneManager.LoadScene("Level2");
+            }
+        }
+        if (win2 == true)
+        {
+            SceneManager.LoadScene("Win1");
+        }
 
         horizontalMove = Input.GetAxis("Horizontal");
 
@@ -85,19 +107,6 @@ public class PlayerControl : MonoBehaviour
     {
         float moveSpeed = horizontalMove * speed;
 
-        //going right
-        /*   if (moveSpeed > 0)
-           {
-               moveRight = true;
-           }
-
-           if (moveRight == true)
-           {
-               animator.SetBool("run", true);
-               animator.SetBool("idle", false);
-               spi.flipX = false;
-           }*/
-        //going left
         if (jump)
         {
             myBody.AddForce(Vector2.up * jumpLimit, ForceMode2D.Impulse);
@@ -124,8 +133,8 @@ public class PlayerControl : MonoBehaviour
         }
 
 
+      
 
-        
         if (myBody.velocity.y >= 0)
         {
             myBody.gravityScale = gravityScale;
@@ -137,22 +146,7 @@ public class PlayerControl : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, castDist);
 
-        if (dead == true)
-        {
-            SceneManager.LoadScene("Game Over");
-        }
-        if (win == true)
-        {
-            SceneManager.LoadScene("Level3");
-        if (win3 == true)
-            {
-                SceneManager.LoadScene("Level2");
-            }
-        }
-        if (win2 == true)
-        {
-            SceneManager.LoadScene("Win1");
-        }
+        
 
         Debug.DrawRay(transform.position, Vector2.down * castDist, Color.red);
 
@@ -170,15 +164,15 @@ public class PlayerControl : MonoBehaviour
         {
             dead = true;
         }
-        if ((hit.collider != null && hit.transform.name == "Flag") && (Input.GetButtonDown("Up")))
+        if ((hit.collider != null && hit.transform.name == "Flag") && (Up == true))
         {
             win = true;
         }
-        if ((hit.collider != null && hit.transform.name == "Flag2") && (Input.GetButtonDown("Up")))
+        if ((hit.collider != null && hit.transform.name == "Flag2") && (Up == true))
         {
             win3 = true;
         }
-        if ((hit.collider != null && hit.transform.tag == "FlagWIN") && (Input.GetButtonDown("Up")))
+        if ((hit.collider != null && hit.transform.tag == "FlagWIN"))
         {
             win2 = true;
         }
@@ -194,15 +188,22 @@ public class PlayerControl : MonoBehaviour
         }
         if ((hit.collider != null && hit.transform.name == "id2"))
         {
-            win = true;
+            id += 1;
+            Destroy(id2);
         }
         if ((hit.collider != null && hit.transform.name == "id3"))
         {
-            win = true;
+            id += 1;
+            Destroy(id3);
         }
         if ((hit.collider != null && hit.transform.name == "id4"))
         {
-            win = true;
+            id += 1;
+            Destroy(id4);
+        }
+        if(id == 4)
+        {
+            Destroy(idbox);
         }
 
         myBody.velocity = new Vector3(moveSpeed, myBody.velocity.y, 0);

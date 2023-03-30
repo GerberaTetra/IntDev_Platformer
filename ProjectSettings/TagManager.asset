@@ -12,6 +12,8 @@ TagManager:
   - id2
   - id3
   - id4
+  - idbox
+  - flag2
   layers:
   - Default
   - TransparentFX
