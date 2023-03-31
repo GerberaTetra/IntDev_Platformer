@@ -35309,9 +35309,10 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515921638}
-  m_Text: 'In order for the door to open,
+  m_Text: 'In order to gain access to the door,
 
-    you''ll need to collect four keycards.'
+    you''ll need to collect four
+    keycards.'
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1

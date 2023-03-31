@@ -65,12 +65,12 @@ public class PlayerControl : MonoBehaviour
         if (win == true)
         {
             SceneManager.LoadScene("Level3");
-
+        }
         if ((win3 == true))
             {
                 SceneManager.LoadScene("Level2");
             }
-        }
+        
         if (win2 == true)
         {
             SceneManager.LoadScene("Win1");
